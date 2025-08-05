@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Usage Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>ID:</strong> {{ usage.id }}</p>
+            <p><strong>Flat:</strong> {{ usage.flat }}</p>
+            <p><strong>Month:</strong> {{ usage.month }}</p>
+            <p><strong>Units:</strong> {{ usage.units }}</p>
+            <p><strong>Amount:</strong> {{ usage.amount }}</p>
+        </div>
+    </div>
+    <a href="{% url 'electricity:usage_list' %}" class="btn btn-secondary mt-3">Back to Usage</a>
+</div>
+{% endblock %}
