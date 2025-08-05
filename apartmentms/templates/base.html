@@ -60,16 +60,18 @@
                 <div class="position-sticky pt-3">
                     <a class="navbar-brand d-block text-center mb-4 text-white" href="/" style="font-size:1.3rem;">VVS Classic AMS</a>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/dashboard/">Dashboard</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/flats/">Flats</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/residents/">Residents</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/complaints/">Complaints</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/documents/">Notices</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/core/messages/">Messages</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/billing/">Billing</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/electricity/">Electricity</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/infrastructure/">Infrastructure</a></li>
-                        <li class="nav-item mb-2"><a class="nav-link text-white" href="/visitors/">Visitors</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'flats:flat_list' %}">Flats</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'residents:resident_list' %}">Residents</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'complaints:complaint_list' %}">Complaints</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'documents:notice_list' %}">Notices</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'core:message_list' %}">Messages</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'billing:bill_list' %}">Billing</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'electricity:usage_list' %}">Electricity</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'infrastructure:contract_list' %}">Infrastructure</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'visitors:visitor_list' %}">Visitors</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'account_login' %}">Login</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'account_signup' %}">Sign Up</a></li>
                     </ul>
                 </div>
             </nav>
