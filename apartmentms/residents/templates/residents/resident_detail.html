@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Resident Details</h2>
+    <table class="table table-bordered">
+        <tr><th>Name</th><td>{{ resident.name }}</td></tr>
+        <tr><th>Email</th><td>{{ resident.email }}</td></tr>
+        <tr><th>Phone</th><td>{{ resident.phone }}</td></tr>
+        <tr><th>Flat</th><td>{{ resident.flat }}</td></tr>
+        <tr><th>Role</th><td>{{ resident.role }}</td></tr>
+        <!-- Add more fields as needed -->
+    </table>
+    <a href="{% url 'residents:resident_list' %}" class="btn btn-primary">Back to Residents List</a>
+</div>
+{% endblock %}

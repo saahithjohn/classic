@@ -7,7 +7,9 @@ from django.contrib.auth.models import Group
 from residents.models import ResidentProfile
 
 def home(request):
-    return render(request, 'core/home.html')
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+    return redirect('dashboard:dashboard')
 
 @login_required
 def message_list(request):
