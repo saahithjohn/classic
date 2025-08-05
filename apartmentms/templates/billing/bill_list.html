@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Bills</h2>
+    <a href="{% url 'billing:bill_create' %}" class="btn btn-primary mb-3">Add Bill</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Flat</th>
+                <th>Amount</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.id }}</td>
+                <td>{{ bill.flat }}</td>
+                <td>{{ bill.amount }}</td>
+                <td>{{ bill.due_date }}</td>
+                <td>{{ bill.status }}</td>
+                <td>
+                    <a href="{% url 'billing:bill_detail' bill.id %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'billing:bill_update' bill.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'billing:bill_delete' bill.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No bills found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

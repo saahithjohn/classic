@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Electricity Usage</h2>
+    <a href="{% url 'electricity:usage_create' %}" class="btn btn-primary mb-3">Add Usage</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Flat</th>
+                <th>Month</th>
+                <th>Units</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usage in usages %}
+            <tr>
+                <td>{{ usage.id }}</td>
+                <td>{{ usage.flat }}</td>
+                <td>{{ usage.month }}</td>
+                <td>{{ usage.units }}</td>
+                <td>{{ usage.amount }}</td>
+                <td>
+                    <a href="{% url 'electricity:usage_detail' usage.id %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'electricity:usage_update' usage.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'electricity:usage_delete' usage.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No usage records found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
