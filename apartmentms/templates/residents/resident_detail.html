@@ -15,9 +15,9 @@
             <li class="list-group-item"><strong>Move In:</strong> {{ resident.move_in_date }}</li>
             <li class="list-group-item"><strong>Move Out:</strong> {{ resident.move_out_date }}</li>
         </ul>
-        <a href="{% url 'resident_update' resident.pk %}" class="btn btn-secondary me-2">Edit</a>
-        <a href="{% url 'resident_delete' resident.pk %}" class="btn btn-danger me-2">Delete</a>
-        <a href="{% url 'resident_list' %}" class="btn btn-outline-primary">Back to List</a>
+        <a href="{% url 'residents:resident_update' resident.pk %}" class="btn btn-secondary me-2">Edit</a>
+        <a href="{% url 'residents:resident_delete' resident.pk %}" class="btn btn-danger me-2">Delete</a>
+        <a href="{% url 'residents:resident_list' %}" class="btn btn-outline-primary">Back to List</a>
     </div>
 </div>
 {% endblock %}
