@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">AMC Contracts</h2>
+    <a href="{% url 'infrastructure:contract_create' %}" class="btn btn-primary mb-3">Add Contract</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Vendor</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+            <tr>
+                <td>{{ contract.id }}</td>
+                <td>{{ contract.vendor }}</td>
+                <td>{{ contract.start_date }}</td>
+                <td>{{ contract.end_date }}</td>
+                <td>{{ contract.amount }}</td>
+                <td>{{ contract.status }}</td>
+                <td>
+                    <a href="{% url 'infrastructure:contract_detail' contract.id %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'infrastructure:contract_update' contract.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'infrastructure:contract_delete' contract.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="7">No contracts found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

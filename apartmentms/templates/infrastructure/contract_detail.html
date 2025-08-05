@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Contract Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>ID:</strong> {{ contract.id }}</p>
+            <p><strong>Vendor:</strong> {{ contract.vendor }}</p>
+            <p><strong>Start Date:</strong> {{ contract.start_date }}</p>
+            <p><strong>End Date:</strong> {{ contract.end_date }}</p>
+            <p><strong>Amount:</strong> {{ contract.amount }}</p>
+            <p><strong>Status:</strong> {{ contract.status }}</p>
+        </div>
+    </div>
+    <a href="{% url 'infrastructure:contract_list' %}" class="btn btn-secondary mt-3">Back to Contracts</a>
+</div>
+{% endblock %}

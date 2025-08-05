@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Visitor Logs</h2>
+    <a href="{% url 'visitors:visitor_create' %}" class="btn btn-primary mb-3">Add Visitor</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Flat</th>
+                <th>Visit Date</th>
+                <th>Purpose</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visitor in visitors %}
+            <tr>
+                <td>{{ visitor.id }}</td>
+                <td>{{ visitor.name }}</td>
+                <td>{{ visitor.flat }}</td>
+                <td>{{ visitor.visit_date }}</td>
+                <td>{{ visitor.purpose }}</td>
+                <td>
+                    <a href="{% url 'visitors:visitor_detail' visitor.id %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'visitors:visitor_update' visitor.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'visitors:visitor_delete' visitor.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No visitors found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
