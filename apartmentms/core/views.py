@@ -87,19 +87,18 @@ def setup_roles_and_users():
         else:
             group = Group.objects.get(name='Resident')
         user.groups.add(group)
-        # Create ResidentProfile for owners
-        if u['status'] == 'owner':
+        # Create ResidentProfile for owners with valid flat
+        if u['status'] == 'owner' and u['flat_no']:
             from flats.models import Flat
-            flat = None
-            if u['flat_no']:
-                flat = Flat.objects.filter(number=u['flat_no']).first()
-            ResidentProfile.objects.get_or_create(
-                user=user,
-                flat=flat,
-                defaults={
-                    'phone': u['mobile_no'],
-                    'email': u['email'],
-                    'is_owner': True,
-                    'is_tenant': False,
-                }
-            )
+            flat = Flat.objects.filter(number=u['flat_no']).first()
+            if flat:
+                ResidentProfile.objects.get_or_create(
+                    user=user,
+                    flat=flat,
+                    defaults={
+                        'phone': u['mobile_no'],
+                        'email': u['email'],
+                        'is_owner': True,
+                        'is_tenant': False,
+                    }
+                )
