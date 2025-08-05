@@ -33,6 +33,38 @@
             </div>
         </div>
     </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-warning text-dark">Bills</div>
+            <div class="card-body">
+                <h3>{{ bill_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-secondary text-white">Electricity</div>
+            <div class="card-body">
+                <h3>{{ usage_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-dark text-white">Contracts</div>
+            <div class="card-body">
+                <h3>{{ contract_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-light text-dark">Visitors</div>
+            <div class="card-body">
+                <h3>{{ visitor_count }}</h3>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row g-4">
     <div class="col-md-6">
@@ -63,8 +95,6 @@
             </ul>
         </div>
     </div>
-</div>
-<div class="row g-4">
     <div class="col-md-6">
         <div class="card shadow mb-4">
             <div class="card-header bg-success text-white">Messages</div>
@@ -89,6 +119,62 @@
                 </li>
                 {% empty %}
                 <li class="list-group-item">No complaints found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-warning text-dark">Bills</div>
+            <ul class="list-group list-group-flush">
+                {% for bill in bills %}
+                <li class="list-group-item">
+                    {{ bill }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No bills found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">Electricity</div>
+            <ul class="list-group list-group-flush">
+                {% for usage in usages %}
+                <li class="list-group-item">
+                    {{ usage }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No usage records found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-dark text-white">Contracts</div>
+            <ul class="list-group list-group-flush">
+                {% for contract in contracts %}
+                <li class="list-group-item">
+                    {{ contract }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No contracts found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-light text-dark">Visitors</div>
+            <ul class="list-group list-group-flush">
+                {% for visitor in visitors %}
+                <li class="list-group-item">
+                    {{ visitor }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No visitors found.</li>
                 {% endfor %}
             </ul>
         </div>

@@ -8,12 +8,44 @@ from core.models import Message  # Assuming Message model exists
 def dashboard(request):
     flat_count = Flat.objects.count()
     member_count = ResidentProfile.objects.count()
-    notice_count = Notice.objects.count() if 'documents' in globals() else 0
-    message_count = Message.objects.count() if 'core' in globals() else 0
-    complaint_count = Complaint.objects.count() if 'complaints' in globals() else 0
-    notices = Notice.objects.all()[:5] if 'documents' in globals() else []
-    messages = Message.objects.all()[:5] if 'core' in globals() else []
-    complaints = Complaint.objects.all()[:5] if 'complaints' in globals() else []
+    notice_count = Notice.objects.count()
+    message_count = Message.objects.count()
+    complaint_count = Complaint.objects.count()
+    bill_count = 0
+    usage_count = 0
+    contract_count = 0
+    visitor_count = 0
+    bills = []
+    usages = []
+    contracts = []
+    visitors = []
+    try:
+        from billing.models import Bill
+        bill_count = Bill.objects.count()
+        bills = Bill.objects.order_by('-created_at')[:5]
+    except Exception:
+        pass
+    try:
+        from electricity.models import ElectricityUsage
+        usage_count = ElectricityUsage.objects.count()
+        usages = ElectricityUsage.objects.order_by('-created_at')[:5]
+    except Exception:
+        pass
+    try:
+        from infrastructure.models import AMCContract
+        contract_count = AMCContract.objects.count()
+        contracts = AMCContract.objects.order_by('-start_date')[:5]
+    except Exception:
+        pass
+    try:
+        from visitors.models import VisitorLog
+        visitor_count = VisitorLog.objects.count()
+        visitors = VisitorLog.objects.order_by('-entry_time')[:5]
+    except Exception:
+        pass
+    notices = Notice.objects.all()[:5]
+    messages = Message.objects.all()[:5]
+    complaints = Complaint.objects.all()[:5]
     members = ResidentProfile.objects.select_related('user', 'flat').all()[:5]
     return render(request, 'dashboard/dashboard.html', {
         'flat_count': flat_count,
@@ -21,8 +53,16 @@ def dashboard(request):
         'notice_count': notice_count,
         'message_count': message_count,
         'complaint_count': complaint_count,
+        'bill_count': bill_count,
+        'usage_count': usage_count,
+        'contract_count': contract_count,
+        'visitor_count': visitor_count,
         'notices': notices,
         'messages': messages,
         'complaints': complaints,
         'members': members,
+        'bills': bills,
+        'usages': usages,
+        'contracts': contracts,
+        'visitors': visitors,
     })
