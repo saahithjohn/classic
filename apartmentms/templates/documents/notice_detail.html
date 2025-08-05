@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Notice: {{ notice.title }}</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><strong>Content:</strong> {{ notice.content }}</li>
+            <li class="list-group-item"><strong>Created:</strong> {{ notice.created_at|date:'Y-m-d H:i' }}</li>
+            <li class="list-group-item"><strong>Updated:</strong> {{ notice.updated_at|date:'Y-m-d H:i' }}</li>
+        </ul>
+        <a href="{% url 'notice_update' notice.pk %}" class="btn btn-secondary me-2">Edit</a>
+        <a href="{% url 'notice_delete' notice.pk %}" class="btn btn-danger me-2">Delete</a>
+        <a href="{% url 'notice_list' %}" class="btn btn-outline-primary">Back to List</a>
+    </div>
+</div>
+{% endblock %}
