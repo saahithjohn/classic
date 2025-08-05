@@ -79,7 +79,12 @@
                                 <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'visitors:visitor_list' %}">Visitors</a></li>
                                 <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'residents:profile' user_id=request.user.id %}">Profile</a></li>
                             {% endif %}
-                            <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'account_logout' %}">Logout</a></li>
+                            <li class="nav-item mb-2">
+                              <form method="post" action="{% url 'account_logout' %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn btn-link text-white p-0" style="text-decoration:none;">Logout</button>
+                              </form>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
