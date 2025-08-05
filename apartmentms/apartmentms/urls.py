@@ -15,6 +15,7 @@ urlpatterns = [
     path('complaints/', include('complaints.urls')),
     path('visitors/', include('visitors.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('accounts/allauth/', include('allauth.urls')),
     path('', include('core.urls')),
 ]
 
