@@ -27,7 +27,7 @@
                 <td>
                     <a href="{% url 'flats:flat_detail' flat.pk %}" class="btn btn-sm btn-outline-primary">View</a>
                     <a href="{% url 'flats:flat_update' flat.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                    <a href="{% url 'flats:flat_delete' flat.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    <a href="{% url 'flats:flat_delete' flat.id %}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
             {% endfor %}
