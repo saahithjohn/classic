@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Flats</h2>
+<a href="{% url 'flat_create' %}">Add New Flat</a>
+<table>
+    <tr>
+        <th>Number</th>
+        <th>UDS Area</th>
+        <th>Owner</th>
+        <th>Tenant</th>
+        <th>Occupied</th>
+        <th>Actions</th>
+    </tr>
+    {% for flat in flats %}
+    <tr>
+        <td>{{ flat.number }}</td>
+        <td>{{ flat.uds_area }}</td>
+        <td>{{ flat.owner }}</td>
+        <td>{{ flat.tenant }}</td>
+        <td>{{ flat.is_occupied }}</td>
+        <td>
+            <a href="{% url 'flat_detail' flat.pk %}">View</a> |
+            <a href="{% url 'flat_update' flat.pk %}">Edit</a> |
+            <a href="{% url 'flat_delete' flat.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
