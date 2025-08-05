@@ -1,6 +1,6 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'replace-this-with-a-secure-key'
+SECRET_KEY = 'b2v!w6$1@r8^zj#4xq9&l0p7s3u!e5t2g8h%k1m4n7b6c5v2w3x4y5z6a7s8d9f0'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
