@@ -1,17 +1,96 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center">
+<div class="row g-4 mb-4">
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-primary text-white">Members</div>
+            <div class="card-body">
+                <h3>{{ member_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-info text-white">Notices</div>
+            <div class="card-body">
+                <h3>{{ notice_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-success text-white">Messages</div>
+            <div class="card-body">
+                <h3>{{ message_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card shadow text-center">
+            <div class="card-header bg-danger text-white">Complaints</div>
+            <div class="card-body">
+                <h3>{{ complaint_count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4">
     <div class="col-md-6">
         <div class="card shadow mb-4">
-            <div class="card-header bg-primary text-white">
-                <h2 class="mb-0">Dashboard</h2>
-            </div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Total Flats:</strong> {{ flat_count }}</li>
-                    <li class="list-group-item"><strong>Total Residents:</strong> {{ resident_count }}</li>
-                </ul>
-            </div>
+            <div class="card-header bg-primary text-white">Members</div>
+            <ul class="list-group list-group-flush">
+                {% for member in members %}
+                <li class="list-group-item">
+                    {{ member.user }} (Flat: {{ member.flat }})
+                </li>
+                {% empty %}
+                <li class="list-group-item">No members found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-info text-white">Notices</div>
+            <ul class="list-group list-group-flush">
+                {% for notice in notices %}
+                <li class="list-group-item">
+                    {{ notice.title|default:notice }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No notices found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-success text-white">Messages</div>
+            <ul class="list-group list-group-flush">
+                {% for message in messages %}
+                <li class="list-group-item">
+                    {{ message.subject|default:message }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No messages found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-danger text-white">Complaints</div>
+            <ul class="list-group list-group-flush">
+                {% for complaint in complaints %}
+                <li class="list-group-item">
+                    {{ complaint.subject|default:complaint }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No complaints found.</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
