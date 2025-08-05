@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Flat {{ flat.number }}</h2>
-<ul>
-    <li>UDS Area: {{ flat.uds_area }}</li>
-    <li>Ownership Type: {{ flat.ownership_type }}</li>
-    <li>Owner: {{ flat.owner }}</li>
-    <li>Tenant: {{ flat.tenant }}</li>
-    <li>Occupied: {{ flat.is_occupied }}</li>
-    <li>Occupancy Start: {{ flat.occupancy_start }}</li>
-    <li>Occupancy End: {{ flat.occupancy_end }}</li>
-</ul>
-<a href="{% url 'flat_update' flat.pk %}">Edit</a> |
-<a href="{% url 'flat_delete' flat.pk %}">Delete</a> |
-<a href="{% url 'flat_list' %}">Back to List</a>
+<div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Flat {{ flat.number }}</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><strong>UDS Area:</strong> {{ flat.uds_area }}</li>
+            <li class="list-group-item"><strong>Ownership Type:</strong> {{ flat.ownership_type|title }}</li>
+            <li class="list-group-item"><strong>Owner:</strong> {{ flat.owner }}</li>
+            <li class="list-group-item"><strong>Tenant:</strong> {{ flat.tenant }}</li>
+            <li class="list-group-item"><strong>Occupied:</strong> {% if flat.is_occupied %}<span class="badge bg-primary">Yes</span>{% else %}No{% endif %}</li>
+            <li class="list-group-item"><strong>Occupancy Start:</strong> {{ flat.occupancy_start }}</li>
+            <li class="list-group-item"><strong>Occupancy End:</strong> {{ flat.occupancy_end }}</li>
+        </ul>
+        <a href="{% url 'flat_update' flat.pk %}" class="btn btn-secondary me-2">Edit</a>
+        <a href="{% url 'flat_delete' flat.pk %}" class="btn btn-danger me-2">Delete</a>
+        <a href="{% url 'flat_list' %}" class="btn btn-outline-primary">Back to List</a>
+    </div>
+</div>
 {% endblock %}

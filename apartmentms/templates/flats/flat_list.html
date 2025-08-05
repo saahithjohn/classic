@@ -1,29 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Flats</h2>
-<a href="{% url 'flat_create' %}">Add New Flat</a>
-<table>
-    <tr>
-        <th>Number</th>
-        <th>UDS Area</th>
-        <th>Owner</th>
-        <th>Tenant</th>
-        <th>Occupied</th>
-        <th>Actions</th>
-    </tr>
-    {% for flat in flats %}
-    <tr>
-        <td>{{ flat.number }}</td>
-        <td>{{ flat.uds_area }}</td>
-        <td>{{ flat.owner }}</td>
-        <td>{{ flat.tenant }}</td>
-        <td>{{ flat.is_occupied }}</td>
-        <td>
-            <a href="{% url 'flat_detail' flat.pk %}">View</a> |
-            <a href="{% url 'flat_update' flat.pk %}">Edit</a> |
-            <a href="{% url 'flat_delete' flat.pk %}">Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Flats</h2>
+    <a href="{% url 'flat_create' %}" class="btn btn-primary">Add New Flat</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>UDS Area</th>
+                <th>Owner</th>
+                <th>Tenant</th>
+                <th>Occupied</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flat in flats %}
+            <tr>
+                <td>{{ flat.number }}</td>
+                <td>{{ flat.uds_area }}</td>
+                <td>{{ flat.owner }}</td>
+                <td>{{ flat.tenant }}</td>
+                <td>{% if flat.is_occupied %}<span class="badge bg-primary">Yes</span>{% else %}No{% endif %}</td>
+                <td>
+                    <a href="{% url 'flat_detail' flat.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                    <a href="{% url 'flat_update' flat.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a href="{% url 'flat_delete' flat.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
