@@ -79,6 +79,7 @@
                                 <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'visitors:visitor_list' %}">Visitors</a></li>
                                 <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'residents:profile' user_id=request.user.id %}">Profile</a></li>
                             {% endif %}
+                            <li class="nav-item mb-2"><a class="nav-link text-white" href="{% url 'account_logout' %}">Logout</a></li>
                         {% endif %}
                     </ul>
                 </div>
