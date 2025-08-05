@@ -1,5 +1,12 @@
 from django.urls import path
+from . import views
+
+app_name = 'residents'
 
 urlpatterns = [
-    # Add resident views here
+    path('', views.resident_list, name='resident_list'),
+    path('create/', views.resident_create, name='resident_create'),
+    path('<int:pk>/', views.resident_detail, name='resident_detail'),
+    path('<int:pk>/edit/', views.resident_update, name='resident_update'),
+    path('<int:pk>/delete/', views.resident_delete, name='resident_delete'),
 ]
