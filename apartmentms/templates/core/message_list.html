@@ -2,7 +2,7 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Messages</h2>
-    <a href="{% url 'message_create' %}" class="btn btn-primary">Add New Message</a>
+    <a href="{% url 'core:message_create' %}" class="btn btn-primary">Add New Message</a>
 </div>
 <div class="table-responsive">
     <table class="table table-hover align-middle">
@@ -25,9 +25,9 @@
                 <td>{% if message.read %}<span class="badge bg-success">Yes</span>{% else %}<span class="badge bg-warning text-dark">No</span>{% endif %}</td>
                 <td>{{ message.created_at|date:'Y-m-d' }}</td>
                 <td>
-                    <a href="{% url 'message_detail' message.pk %}" class="btn btn-sm btn-outline-primary">View</a>
-                    <a href="{% url 'message_update' message.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                    <a href="{% url 'message_delete' message.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    <a href="{% url 'core:message_detail' message.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                    <a href="{% url 'core:message_update' message.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a href="{% url 'core:message_delete' message.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}
