@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Residents</h2>
-<a href="{% url 'resident_create' %}">Add New Resident</a>
-<table>
-    <tr>
-        <th>User</th>
-        <th>Flat</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Owner</th>
-        <th>Tenant</th>
-        <th>Actions</th>
-    </tr>
-    {% for resident in residents %}
-    <tr>
-        <td>{{ resident.user }}</td>
-        <td>{{ resident.flat }}</td>
-        <td>{{ resident.phone }}</td>
-        <td>{{ resident.email }}</td>
-        <td>{{ resident.is_owner }}</td>
-        <td>{{ resident.is_tenant }}</td>
-        <td>
-            <a href="{% url 'resident_detail' resident.pk %}">View</a> |
-            <a href="{% url 'resident_update' resident.pk %}">Edit</a> |
-            <a href="{% url 'resident_delete' resident.pk %}">Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Residents</h2>
+    <a href="{% url 'resident_create' %}" class="btn btn-primary">Add New Resident</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Flat</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Owner</th>
+                <th>Tenant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resident in residents %}
+            <tr>
+                <td>{{ resident.user }}</td>
+                <td>{{ resident.flat }}</td>
+                <td>{{ resident.phone }}</td>
+                <td>{{ resident.email }}</td>
+                <td>{% if resident.is_owner %}<span class="badge bg-primary">Yes</span>{% else %}No{% endif %}</td>
+                <td>{% if resident.is_tenant %}<span class="badge bg-info text-dark">Yes</span>{% else %}No{% endif %}</td>
+                <td>
+                    <a href="{% url 'resident_detail' resident.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                    <a href="{% url 'resident_update' resident.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a href="{% url 'resident_delete' resident.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

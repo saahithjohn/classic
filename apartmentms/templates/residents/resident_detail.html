@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Resident {{ resident.user }}</h2>
-<ul>
-    <li>Flat: {{ resident.flat }}</li>
-    <li>Phone: {{ resident.phone }}</li>
-    <li>Email: {{ resident.email }}</li>
-    <li>Communication Preference: {{ resident.communication_pref }}</li>
-    <li>Owner: {{ resident.is_owner }}</li>
-    <li>Tenant: {{ resident.is_tenant }}</li>
-    <li>Move In: {{ resident.move_in_date }}</li>
-    <li>Move Out: {{ resident.move_out_date }}</li>
-</ul>
-<a href="{% url 'resident_update' resident.pk %}">Edit</a> |
-<a href="{% url 'resident_delete' resident.pk %}">Delete</a> |
-<a href="{% url 'resident_list' %}">Back to List</a>
+<div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Resident {{ resident.user }}</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><strong>Flat:</strong> {{ resident.flat }}</li>
+            <li class="list-group-item"><strong>Phone:</strong> {{ resident.phone }}</li>
+            <li class="list-group-item"><strong>Email:</strong> {{ resident.email }}</li>
+            <li class="list-group-item"><strong>Communication Preference:</strong> {{ resident.communication_pref|title }}</li>
+            <li class="list-group-item"><strong>Owner:</strong> {% if resident.is_owner %}<span class="badge bg-primary">Yes</span>{% else %}No{% endif %}</li>
+            <li class="list-group-item"><strong>Tenant:</strong> {% if resident.is_tenant %}<span class="badge bg-info text-dark">Yes</span>{% else %}No{% endif %}</li>
+            <li class="list-group-item"><strong>Move In:</strong> {{ resident.move_in_date }}</li>
+            <li class="list-group-item"><strong>Move Out:</strong> {{ resident.move_out_date }}</li>
+        </ul>
+        <a href="{% url 'resident_update' resident.pk %}" class="btn btn-secondary me-2">Edit</a>
+        <a href="{% url 'resident_delete' resident.pk %}" class="btn btn-danger me-2">Delete</a>
+        <a href="{% url 'resident_list' %}" class="btn btn-outline-primary">Back to List</a>
+    </div>
+</div>
 {% endblock %}

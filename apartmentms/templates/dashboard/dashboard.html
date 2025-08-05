@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Dashboard</h2>
-<ul>
-    <li>Total Flats: {{ flat_count }}</li>
-    <li>Total Residents: {{ resident_count }}</li>
-</ul>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Dashboard</h2>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Total Flats:</strong> {{ flat_count }}</li>
+                    <li class="list-group-item"><strong>Total Residents:</strong> {{ resident_count }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
