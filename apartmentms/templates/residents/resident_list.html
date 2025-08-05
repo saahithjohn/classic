@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Residents</h2>
+<a href="{% url 'resident_create' %}">Add New Resident</a>
+<table>
+    <tr>
+        <th>User</th>
+        <th>Flat</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Owner</th>
+        <th>Tenant</th>
+        <th>Actions</th>
+    </tr>
+    {% for resident in residents %}
+    <tr>
+        <td>{{ resident.user }}</td>
+        <td>{{ resident.flat }}</td>
+        <td>{{ resident.phone }}</td>
+        <td>{{ resident.email }}</td>
+        <td>{{ resident.is_owner }}</td>
+        <td>{{ resident.is_tenant }}</td>
+        <td>
+            <a href="{% url 'resident_detail' resident.pk %}">View</a> |
+            <a href="{% url 'resident_update' resident.pk %}">Edit</a> |
+            <a href="{% url 'resident_delete' resident.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

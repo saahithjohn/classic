@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Resident {{ resident.user }}</h2>
+<ul>
+    <li>Flat: {{ resident.flat }}</li>
+    <li>Phone: {{ resident.phone }}</li>
+    <li>Email: {{ resident.email }}</li>
+    <li>Communication Preference: {{ resident.communication_pref }}</li>
+    <li>Owner: {{ resident.is_owner }}</li>
+    <li>Tenant: {{ resident.is_tenant }}</li>
+    <li>Move In: {{ resident.move_in_date }}</li>
+    <li>Move Out: {{ resident.move_out_date }}</li>
+</ul>
+<a href="{% url 'resident_update' resident.pk %}">Edit</a> |
+<a href="{% url 'resident_delete' resident.pk %}">Delete</a> |
+<a href="{% url 'resident_list' %}">Back to List</a>
+{% endblock %}
