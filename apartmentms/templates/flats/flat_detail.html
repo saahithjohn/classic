@@ -14,9 +14,9 @@
             <li class="list-group-item"><strong>Occupancy Start:</strong> {{ flat.occupancy_start }}</li>
             <li class="list-group-item"><strong>Occupancy End:</strong> {{ flat.occupancy_end }}</li>
         </ul>
-        <a href="{% url 'flat_update' flat.pk %}" class="btn btn-secondary me-2">Edit</a>
-        <a href="{% url 'flat_delete' flat.pk %}" class="btn btn-danger me-2">Delete</a>
-        <a href="{% url 'flat_list' %}" class="btn btn-outline-primary">Back to List</a>
+        <a href="{% url 'flats:flat_update' flat.pk %}" class="btn btn-secondary me-2">Edit</a>
+        <a href="{% url 'flats:flat_delete' flat.pk %}" class="btn btn-danger me-2">Delete</a>
+        <a href="{% url 'flats:flat_list' %}" class="btn btn-outline-primary">Back to List</a>
     </div>
 </div>
 {% endblock %}
