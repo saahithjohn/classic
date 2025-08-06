@@ -19,7 +19,7 @@ def resident_create(request):
         form = ResidentProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('resident_list')
+            return redirect('residents:resident_list')
     else:
         form = ResidentProfileForm()
     return render(request, 'residents/resident_form.html', {'form': form})
