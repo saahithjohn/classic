@@ -41,5 +41,5 @@ def flat_delete(request, pk):
     flat = get_object_or_404(Flat, pk=pk)
     if request.method == 'POST':
         flat.delete()
-        return redirect('flat_list')
+        return redirect('flats:flat_list')
     return render(request, 'flats/flat_confirm_delete.html', {'flat': flat})

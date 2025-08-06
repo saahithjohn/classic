@@ -9,7 +9,7 @@
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Confirm Delete</button>
-            <a href="{% url 'flat_list' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
+            <a href="{% url 'flats:flat_list' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
         </form>
     </div>
 </div>
