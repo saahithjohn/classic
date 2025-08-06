@@ -1,5 +1,5 @@
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/allauth/login/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/accounts/allauth/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
