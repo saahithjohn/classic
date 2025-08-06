@@ -19,7 +19,7 @@ def flat_create(request):
         form = FlatForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('flat_list')
+            return redirect('flats:flat_list')
     else:
         form = FlatForm()
     return render(request, 'flats/flat_form.html', {'form': form})
