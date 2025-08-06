@@ -19,7 +19,7 @@ def complaint_create(request):
         form = ComplaintForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('complaint_list')
+            return redirect('complaints:complaint_list')
     else:
         form = ComplaintForm()
     return render(request, 'complaints/complaint_form.html', {'form': form})

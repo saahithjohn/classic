@@ -19,7 +19,7 @@ def notice_create(request):
         form = NoticeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('notice_list')
+            return redirect('documents:notice_list')
     else:
         form = NoticeForm()
     return render(request, 'documents/notice_form.html', {'form': form})
@@ -31,7 +31,7 @@ def notice_update(request, pk):
         form = NoticeForm(request.POST, instance=notice)
         if form.is_valid():
             form.save()
-            return redirect('notice_detail', pk=pk)
+            return redirect('documents:notice_detail', pk=pk)
     else:
         form = NoticeForm(instance=notice)
     return render(request, 'documents/notice_form.html', {'form': form})
@@ -41,5 +41,5 @@ def notice_delete(request, pk):
     notice = get_object_or_404(Notice, pk=pk)
     if request.method == 'POST':
         notice.delete()
-        return redirect('notice_list')
+        return redirect('documents:notice_list')
     return render(request, 'documents/notice_confirm_delete.html', {'notice': notice})
