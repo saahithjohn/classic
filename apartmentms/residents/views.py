@@ -41,5 +41,5 @@ def resident_delete(request, pk):
     resident = get_object_or_404(ResidentProfile, pk=pk)
     if request.method == 'POST':
         resident.delete()
-        return redirect('resident_list')
+        return redirect('residents:resident_list')
     return render(request, 'residents/resident_confirm_delete.html', {'resident': resident})
